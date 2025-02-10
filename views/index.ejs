@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title><%= title %></title>
+</head>
+<body class="p-5 flex flex-col gap-10">
+    <header class="pl-[10vw]">
+        <h1 class="text-4xl"><%= title %></h1>
+    </header>
+    <main class="flex flex-wrap basis-52 justify-evenly p-5 gap-10 sm:gap-0">
+        <%- include("./partials/indexCard", {headerText: "Games", items: games}) %>
+        <%- include("./partials/indexCard", {headerText: "Developers", items: developers}) %>
+        <%- include("./partials/indexCard", {headerText: "Categories", items: genres}) %>
+    </main>
+</body>
+</html>

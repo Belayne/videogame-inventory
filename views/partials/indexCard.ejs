@@ -1,0 +1,13 @@
+<section class="py-1 h-[80vh] md:h-[500px] flex flex-col gap-5">
+    <%- include("./indexHeader", {headerText, items}) %>
+    <% if(items && items.length > 0) {%>
+        <ul>
+        <% items.forEach(item => { %>
+            <li><p><%= item %></p></li>
+            <%}) %>
+        </ul>
+    <%} else {%>
+            <p class="text-center">No <%= headerText %> present in inventory.</p>
+            <% } %>
+    <button class="mt-auto py-2 bg-black text-white text-xl w-full hover:cursor-pointer">Add new</button>
+</section>
