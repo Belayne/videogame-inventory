@@ -3,7 +3,7 @@
     <% if(items && items.length > 0) {%>
         <ul>
         <% items.forEach(item => { %>
-            <li class="w-full overflow-hidden border-b border-b-transparent hover:border-b-black"><a class="block" href=""><%= item %></a></li>
+            <li class="w-full overflow-hidden border-b border-b-transparent hover:border-b-black"><a class="block" href="<%=headerText%>/<%= item %>"><%= item %></a></li>
             <%}) %>
         </ul>
     <%} else {%>

@@ -29,12 +29,36 @@ async function getAllGenres() {
     return rows.map(row => row.genre);
 }
 
+async function getAllGamesInGenre(genre) {
+    const { rows } = await query(`
+        SELECT title, release_date, name FROM videogames
+        JOIN developers ON developers.id = videogames.developer_id
+        JOIN videogame_genre ON videogame_id=videogames.id
+        JOIN genres ON genre_id=genres.id
+        WHERE genre=$1;`,
+        [genre]);
+    
+    return rows;
+}
+
+async function getNumberOfGamesInGenre(genre) {
+    const { rows } = await query(`
+        SELECT COUNT(*) FROM genres
+        JOIN videogame_genre ON genres.id = genre_id
+        WHERE genre=$1;`,      
+        [genre])
+
+    return rows;
+}
+
 const db = {
     getAllGames,
     getAllDevelopers,
     getAllDevelopersNames,
     getAllGameTitles,
-    getAllGenres
+    getAllGenres,
+    getAllGamesInGenre,
+    getNumberOfGamesInGenre
 }
 
 export default db;

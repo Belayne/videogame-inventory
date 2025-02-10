@@ -1,6 +1,7 @@
 import express, { urlencoded } from "express";
 import path from "path";
 import indexRouter from "./routes/indexRouter.js";
+import genreRouter from "./routes/genreRouter.js";
 
 const PORT = process.env.PORT || 8000;
 const __dirname = import.meta.dirname;
@@ -14,5 +15,6 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(indexRouter);
+app.use("/genres",genreRouter);
 
 app.listen(PORT, () => console.log("Server listening on port " + PORT));
