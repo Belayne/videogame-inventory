@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><% title %></title>
+</head>
+<body class="p-5 flex flex-col gap-10">
+    <%- include("./partials/pageHeader") %>
+    <main class="flex flex-col items-center py-5">
+        <section class="flex flex-col gap-2">
+            <h2 class="text-3xl font-medium border p-1 mb-1 text-center"><%= developer.name %></h2>
+            <p>Country: <%= developer.country %></p>
+            <p>Headquarters: <%= developer.headquarters %></p>
+            <p>Website: <a class="underline" href="<%= developer.website %>" target="_blank"><%= developer.website %></a></p>
+            <div class="flex gap-1 justify-center">
+                <button class="border p-2 h-fit font-medium bg-red-500 text-white hover:cursor-pointer">Delete developer</button>
+                <button class="border p-2 h-fit font-medium bg-black text-white hover:cursor-pointer">Edit details</button>
+            </div>
+        </section>
+        <section>
+        </section>
+    </main>
+</body>
+</html>

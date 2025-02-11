@@ -4,7 +4,7 @@ async function showDeveloper(req, res) {
     const { developer } = req.params;
     const developerData = await db.getDeveloperData(developer);
 
-    res.send(developerData);
+    res.render("developer", {title: developer, developer: developerData});
 }
 
 const developerController = {

@@ -57,7 +57,7 @@ async function getDeveloperData(developer) {
         WHERE name=$1
         `, [developer])
 
-    return rows;
+    return rows[0];
 }
 
 const db = {
