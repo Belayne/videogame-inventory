@@ -646,6 +646,9 @@
   .bg-red-700 {
     background-color: var(--color-red-700);
   }
+  .p-0 {
+    padding: calc(var(--spacing) * 0);
+  }
   .p-1 {
     padding: calc(var(--spacing) * 1);
   }
@@ -664,11 +667,20 @@
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
+  .py-4 {
+    padding-block: calc(var(--spacing) * 4);
+  }
+  .py-5 {
+    padding-block: calc(var(--spacing) * 5);
+  }
   .pl-\[10vw\] {
     padding-left: 10vw;
   }
   .text-center {
     text-align: center;
+  }
+  .text-left {
+    text-align: left;
   }
   .text-2xl {
     font-size: var(--text-2xl);
@@ -731,9 +743,19 @@
       gap: calc(var(--spacing) * 0);
     }
   }
+  .sm\:pl-\[10vw\] {
+    @media (width >= 40rem) {
+      padding-left: 10vw;
+    }
+  }
   .md\:h-\[500px\] {
     @media (width >= 48rem) {
       height: 500px;
+    }
+  }
+  .md\:w-fit {
+    @media (width >= 48rem) {
+      width: fit-content;
     }
   }
 }

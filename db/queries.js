@@ -51,6 +51,15 @@ async function getNumberOfGamesInGenre(genre) {
     return rows;
 }
 
+async function getDeveloperData(developer) {
+    const { rows } = await query(`
+        SELECT * FROM developers
+        WHERE name=$1
+        `, [developer])
+
+    return rows;
+}
+
 const db = {
     getAllGames,
     getAllDevelopers,
@@ -58,7 +67,8 @@ const db = {
     getAllGameTitles,
     getAllGenres,
     getAllGamesInGenre,
-    getNumberOfGamesInGenre
+    getNumberOfGamesInGenre,
+    getDeveloperData
 }
 
 export default db;
