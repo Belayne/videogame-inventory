@@ -10,9 +10,7 @@
     <title><%= title %></title>
 </head>
 <body class="p-5 flex flex-col gap-10">
-    <header class="pl-[10vw]">
-        <h1 class="text-4xl font-bold"><%= title %></h1>
-    </header>
+    <%- include("./partials/pageHeader") %>
     <main class="flex flex-wrap justify-evenly p-5 gap-10 sm:gap-0">
         <%- include("./partials/indexCard", {headerText: "Games", items: games}) %>
         <%- include("./partials/indexCard", {headerText: "Developers", items: developers}) %>

@@ -34,8 +34,8 @@ async function getAllGamesInGenre(genre) {
         SELECT title, release_date, name FROM videogames
         JOIN developers ON developers.id = videogames.developer_id
         JOIN videogame_genre ON videogame_id=videogames.id
-        JOIN genres ON genre_id=genres.id
-        WHERE genre=$1;`,
+        WHERE genre_id=(SELECT id FROM genres
+            WHERE genre=$1);`,
         [genre]);
     
     return rows;

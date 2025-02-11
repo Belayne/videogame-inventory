@@ -1,5 +1,5 @@
 <section id=<%= headerText %> class="py-1 h-[90vh] md:h-[500px] flex flex-col gap-5 snap-start">
-    <%- include("./indexHeader", {headerText, items}) %>
+    <%- include("./cardHeader", {headerText, items}) %>
     <% if(items && items.length > 0) {%>
         <ul>
         <% items.forEach(item => { %>
