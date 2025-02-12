@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title><%= videogameData.title %></title>
+</head>
+<body class="p-5 flex flex-col gap-10">
+    <%- include("./partials/pageHeader") %>
+    <main class="flex flex-col gap-5 items-center py-5">
+        <section class="flex flex-col gap-2">
+            <h2 class="p-2 text-3xl font-medium border text-center mx-auto"><%= videogameData.title %></h2>
+            <p>Developer: <%= videogameData.developer%></p>
+            <p>Release date: <%= videogameData.release_date.toLocaleDateString()%></p>
+            <div class="mx-auto">
+                <button class="border p-2 h-fit font-medium bg-red-500 text-white hover:cursor-pointer">Delete game</button>
+                <button class="border p-2 h-fit font-medium bg-black text-white hover:cursor-pointer">Edit details</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

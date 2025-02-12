@@ -9,9 +9,9 @@
 <body class="p-5 flex flex-col gap-10">
     <%- include("./partials/pageHeader") %>
     <main class="flex flex-col gap-5 items-center py-5">
-        <article class="flex flex-col items-center gap-5">
+        <section class="flex flex-col items-center gap-5">
             <div>
-                <h2 class="p-2 text-3xl font-medium border w-fit mx-auto"><%- title  %></h2>
+                <h2 class="p-2 text-3xl font-medium border text-center mx-auto"><%- title  %></h2>
                 <p class="p-1"><%=(numberOfGames == 1? `There is 1 game `: `There are ${numberOfGames} games`) %> in this genre.</p>
             </div>
             <ul>
@@ -23,7 +23,7 @@
                 <button class="border p-2 h-fit font-medium bg-red-500 text-white hover:cursor-pointer">Delete genre</button>
                 <button class="border p-2 h-fit font-medium bg-black text-white hover:cursor-pointer">Add new game</button>
             </div>
-        </article>
+        </section>
     </main>
 </body>
 </html>
