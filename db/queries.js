@@ -41,16 +41,6 @@ async function getAllGamesInGenre(genre) {
     return rows;
 }
 
-async function getNumberOfGamesInGenre(genre) {
-    const { rows } = await query(`
-        SELECT COUNT(*) FROM genres
-        JOIN videogame_genre ON genres.id = genre_id
-        WHERE genre=$1;`,      
-        [genre])
-
-    return rows;
-}
-
 async function getDeveloperData(developer) {
     const { rows } = await query(`
         SELECT * FROM developers
@@ -70,6 +60,14 @@ async function getVideogameData(videogame) {
     return rows[0]
 }
 
+async function insertNewDeveloper(name, country, headquarters, website) {
+    await query(`INSERT INTO developers (name, country, headquarters, website) VALUES($1, $2, $3, $4)`, [name, country, headquarters, website]);
+}
+
+async function insertNewVideogame(title, release_date, developer_id) {
+    await query(`INSERT INTO videogames (title, release_date, developer_ID) VALUES($1, $2, $3)` [title, release_date, developer_id]);
+}
+
 const db = {
     getAllGames,
     getAllDevelopers,
@@ -77,9 +75,9 @@ const db = {
     getAllGameTitles,
     getAllGenres,
     getAllGamesInGenre,
-    getNumberOfGamesInGenre,
     getDeveloperData,
-    getVideogameData
+    getVideogameData,
+    insertNewDeveloper
 }
 
 export default db;

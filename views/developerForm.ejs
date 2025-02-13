@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>New developer form</title>
+</head>
+<body class="p-5 flex flex-col gap-10">
+    <%- include("./partials/pageHeader") %>
+    <main class="flex flex-col gap-5 items-center py-5">
+        <h2 class="p-2 text-3xl font-medium border text-center mx-auto">New developer</h2>
+        <form class="grid grid-cols-2 gap-y-3 items-center" action="/developers/new" method="POST">
+            <label for="developerName">Name: </label>
+            <input class="border p-1" type="text" id="deloperName" name="name">
+            <label for="country">Country: </label>
+            <input class="border p-1" type="text" id="country" name="country">
+            <label for="headquarters">Headquarters: </label>
+            <input class="border p-1" type="text" id="headquarters" name="headquarters">
+            <label for="website">Website: </label>
+            <input class="border p-1" type="text" id="website" name="website">
+            <button class="border font-medium bg-black text-white col-start-2 p-2" type="submit">Submit</button>
+        </form>
+    </main>
+</body>
+</html>
