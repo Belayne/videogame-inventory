@@ -12,14 +12,15 @@
         <h2 class="p-2 text-3xl font-medium border text-center mx-auto">New developer</h2>
         <form class="grid grid-cols-2 gap-y-3 items-center" action="/developers/new" method="POST">
             <label for="developerName">Name: </label>
-            <input class="border p-1" type="text" id="deloperName" name="name">
+            <input class="border p-1" type="text" id="deloperName" placeholder="Developer" name="name" required>
             <label for="country">Country: </label>
-            <input class="border p-1" type="text" id="country" name="country">
+            <input class="border p-1" type="text" id="country" placeholder="Wakanda" name="country" required>
             <label for="headquarters">Headquarters: </label>
             <input class="border p-1" type="text" id="headquarters" name="headquarters">
             <label for="website">Website: </label>
-            <input class="border p-1" type="text" id="website" name="website">
-            <button class="border font-medium bg-black text-white col-start-2 p-2" type="submit">Submit</button>
+            <input class="border p-1" type="url" id="website" value="http://" name="website"
+                oninput="(e => {if(this.value.length < 7) this.value = 'http://'})()">
+            <button class="border font-medium bg-black text-white col-start-2 p-2 hover:cursor-pointer" type="submit">Submit</button>
         </form>
     </main>
 </body>
