@@ -68,6 +68,10 @@ async function insertNewVideogame(title, release_date, developer_id) {
     await query(`INSERT INTO videogames (title, release_date, developer_ID) VALUES($1, $2, $3)` [title, release_date, developer_id]);
 }
 
+async function insertNewGenre(genre) {
+    await query(`INSERT INTO genres (genre) VALUES($1)`, [genre]);
+}
+
 const db = {
     getAllGames,
     getAllDevelopers,
@@ -77,7 +81,9 @@ const db = {
     getAllGamesInGenre,
     getDeveloperData,
     getVideogameData,
-    insertNewDeveloper
+    insertNewDeveloper,
+    insertNewGenre,
+    insertNewVideogame
 }
 
 export default db;

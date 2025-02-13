@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>New genre form</title>
+</head>
+<body class="p-5 flex flex-col gap-10">
+    <%- include("./partials/pageHeader") %>
+    <main class="flex flex-col gap-5 items-center py-5">
+        <h2 class="p-2 text-3xl font-medium border text-center mx-auto">New genre</h2>
+        <form class="grid grid-cols-2 gap-y-3 items-center" action="/genres/new" method="POST">
+            <label for="genre">Genre: </label>
+            <input class="border p-1" type="text" id="genre" placeholder="New genre name" name="genre" required>
+            <button class="border font-medium bg-black text-white col-start-2 p-2 hover:cursor-pointer" type="submit">Submit</button>
+        </form>
+    </main>
+</body>
+</html>
