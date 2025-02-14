@@ -52,11 +52,24 @@ async function getDeveloperData(developerID) {
 async function getVideogameData(videogameID) {
     const { rows } = await query(`
         SELECT *, name as developer FROM videogames
-        JOIN developers ON developers.id=developer_id
+        JOIN developers ON developer_id = developers.id
         WHERE videogames.id=$1
         `, [videogameID]);
 
-    return rows[0]
+    const videogameData = rows[0];
+    videogameData.genres = await getVideogameGenres(videogameID);
+
+    return videogameData;
+}
+
+async function getVideogameGenres(videogameID) {
+    const {rows} = await query(`
+        SELECT string_agg(genre, ', ') as genres FROM genres
+        JOIN videogame_genre ON genre_id=genres.id
+        WHERE videogame_id=$1;
+        `, [videogameID])
+
+    return rows[0].genres;
 }
 
 async function insertNewDeveloper(name, country, headquarters, website) {
