@@ -1,14 +1,10 @@
 import db from "../db/queries.js";
 
 async function showDeveloper(req, res, next) {
-    const { developer } = req.params;
-    if(developer == "new") {
-        next();
-        return;
-    }
-    const developerData = await db.getDeveloperData(developer);
+    const { developerID } = req.params;
+    const developerData = await db.getDeveloperData(developerID);
 
-    res.render("developer", {title: developer, developer: developerData});
+    res.render("developer", {title: developerData.name, developer: developerData});
 }
 
 async function showNewDeveloperForm(req, res) {

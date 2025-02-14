@@ -25,37 +25,36 @@ async function getAllDevelopersNames() {
 }
 
 async function getAllGenres() {
-    const { rows } = await query('SELECT genre FROM genres;');
-    return rows.map(row => row.genre);
+    const { rows } = await query('SELECT * FROM genres;');
+    return rows;
 }
 
-async function getAllGamesInGenre(genre) {
+async function getAllGamesInGenre(genreID) {
     const { rows } = await query(`
         SELECT title, release_date, name FROM videogames
         JOIN developers ON developers.id = videogames.developer_id
         JOIN videogame_genre ON videogame_id=videogames.id
-        WHERE genre_id=(SELECT id FROM genres
-            WHERE genre=$1);`,
-        [genre]);
+        WHERE genre_id=$1;`,
+        [genreID]);
     
     return rows;
 }
 
-async function getDeveloperData(developer) {
+async function getDeveloperData(developerID) {
     const { rows } = await query(`
         SELECT * FROM developers
-        WHERE name=$1
-        `, [developer])
+        WHERE id=$1
+        `, [developerID])
 
     return rows[0];
 }
 
-async function getVideogameData(videogame) {
+async function getVideogameData(videogameID) {
     const { rows } = await query(`
         SELECT *, name as developer FROM videogames
         JOIN developers ON developers.id=developer_id
-        WHERE title=$1
-        `, [videogame]);
+        WHERE videogames.id=$1
+        `, [videogameID]);
 
     return rows[0]
 }

@@ -1,12 +1,8 @@
 import db from "../db/queries.js";
 
 async function showGenre(req, res, next) {
-    const { genre } = req.params;
-    if(genre === "new") {
-        next();
-        return;
-    }
-    const gameList = await db.getAllGamesInGenre(genre);
+    const { genreID, genre } = req.params;
+    const gameList = await db.getAllGamesInGenre(genreID);
     res.render("genre", {title: genre, games: gameList, numberOfGames: gameList.length});
 }
 

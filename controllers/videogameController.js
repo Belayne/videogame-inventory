@@ -1,9 +1,9 @@
 import db from "../db/queries.js";
 
 async function showVideogame(req, res) {
-    const {videogameTitle} = req.params;
+    const {videogameID} = req.params;
 
-    const videogameData = await db.getVideogameData(videogameTitle);
+    const videogameData = await db.getVideogameData(videogameID);
     res.render("videogame", {videogameData});
 }
 
