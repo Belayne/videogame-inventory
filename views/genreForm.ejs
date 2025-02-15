@@ -16,5 +16,18 @@
             <button class="border font-medium bg-black text-white col-start-2 p-2 hover:cursor-pointer" type="submit">Submit</button>
         </form>
     </main>
+    <script>
+        const buttons = document.querySelectorAll("button");
+        const notAllowedSpan = document.getElementById("notAllowedSpan");
+        
+        function toggleHidden() {
+            notAllowedSpan.classList.remove("hidden");
+            setTimeout(() => {notAllowedSpan.classList.add("hidden")}, 2000);
+        };
+        
+        buttons.forEach(button => {
+            button.addEventListener("click", toggleHidden);
+        })
+    </script>
 </body>
 </html>

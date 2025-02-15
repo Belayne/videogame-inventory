@@ -18,7 +18,23 @@
                 <button class="border p-2 h-fit font-medium bg-red-500 text-white hover:cursor-pointer">Delete game</button>
                 <button class="border p-2 h-fit font-medium bg-black text-white hover:cursor-pointer">Edit details</button>
             </div>
+            <%- include('./partials/notAllowed') %>
         </section>
     </main>
+    <script>
+        const buttons = document.querySelectorAll("button");
+        const notAllowedSpan = document.getElementById("notAllowedSpan");
+        
+        function toggleHidden() {
+            if(notAllowedSpan.classList.contains("hidden")){
+                notAllowedSpan.classList.remove("hidden");
+                setTimeout(() => {notAllowedSpan.classList.add("hidden")}, 2000);
+            }
+        };
+        
+        buttons.forEach(button => {
+            button.addEventListener("click", toggleHidden);
+        })
+    </script>
 </body>
 </html>
