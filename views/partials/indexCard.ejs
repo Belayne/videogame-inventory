@@ -1,7 +1,7 @@
-<section id=<%= headerText %> class="py-1 h-[90vh] md:h-[500px] flex flex-col gap-5 snap-start">
+<section id=<%= headerText %> class="py-1 h-[90vh] md:h-[500px] flex flex-col gap-5 snap-start bg-white">
     <%- include("./cardHeader", {headerText, items}) %>
     <% if(items && items.length > 0) {%>
-        <ul>
+        <ul class="overflow-auto">
         <% items.forEach(item => { %>
             <li class="w-full overflow-hidden border-b border-b-transparent hover:border-b-black"><a class="block" href="<%=headerText%>/<%= item.id %>/<%= item.name || item.genre || item.title %>"><%= item.name || item.genre || item.title %></a></li>
             <%}) %>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>New videogame form</title>
+</head>
+<body class="p-5 flex flex-col gap-10">
+    <%- include("./partials/pageHeader") %>
+    <main class="flex flex-col gap-5 items-center py-5">
+        <h2 class="p-2 text-3xl font-medium border text-center mx-auto">New videogame</h2>
+        <form class="grid grid-cols-2 gap-y-3 items-center" action="/games/new" method="POST">
+            <label for="title">Title: </label>
+            <input class="border p-1" type="text" id="title" placeholder="Enter title" name="title" required>
+            <label for="release_date">Release data: </label>
+            <input class="border p-1" type="date" id="release_date" name="release_date" required>
+            <label for="genre">Genre: </label>
+            <select class="border p-1" id="genres" name="genre" required>
+                <option value=""></option>
+                <% genres.forEach(genre => {%>
+                    <option value="<%= genre.id %>"><%=genre.genre%></option>
+                    <% }); %>
+            </select>
+            <label for="genre">Developer: </label>
+            <select class="border p-1" id="developer" name="developer" required>
+                <option value=""></option>
+                <% developers.forEach(developer => {%>
+                    <option value="<%= developer.id %>"><%=developer.name%></option>
+                    <% }); %>
+            </select>
+            <button class="border font-medium bg-black text-white col-start-2 p-2 hover:cursor-pointer" type="submit">Submit</button>
+        </form>
+    </main>
+</body>
+</html>

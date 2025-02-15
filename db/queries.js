@@ -43,7 +43,7 @@ async function getAllGamesInGenre(genreID) {
 async function getDeveloperData(developerID) {
     const { rows } = await query(`
         SELECT * FROM developers
-        WHERE id=$1
+        WHERE id=$1;
         `, [developerID])
 
     return rows[0];
@@ -53,7 +53,7 @@ async function getVideogameData(videogameID) {
     const { rows } = await query(`
         SELECT *, name as developer FROM videogames
         JOIN developers ON developer_id = developers.id
-        WHERE videogames.id=$1
+        WHERE videogames.id=$1;
         `, [videogameID]);
 
     const videogameData = rows[0];
@@ -73,15 +73,17 @@ async function getVideogameGenres(videogameID) {
 }
 
 async function insertNewDeveloper(name, country, headquarters, website) {
-    await query(`INSERT INTO developers (name, country, headquarters, website) VALUES($1, $2, $3, $4)`, [name, country, headquarters, website]);
+    await query(`INSERT INTO developers (name, country, headquarters, website) VALUES($1, $2, $3, $4);`, [name, country, headquarters, website]);
 }
 
-async function insertNewVideogame(title, release_date, developer_id) {
-    await query(`INSERT INTO videogames (title, release_date, developer_ID) VALUES($1, $2, $3)` [title, release_date, developer_id]);
+async function insertNewVideogame({title, release_date, genre_id, developer_id}) {
+    const {rows} = await query(`INSERT INTO videogames (title, release_date, developer_id) VALUES($1, $2, $3) RETURNING id as videogame_id;`, [title, release_date, developer_id]);
+    const {videogame_id} = rows[0];
+    await query(`INSERT INTO videogame_genre(videogame_id, genre_id) VALUES($1, $2);`, [videogame_id, genre_id]);
 }
 
 async function insertNewGenre(genre) {
-    await query(`INSERT INTO genres (genre) VALUES($1)`, [genre]);
+    await query(`INSERT INTO genres (genre) VALUES($1);`, [genre]);
 }
 
 const db = {
